@@ -1,5 +1,5 @@
 import express from "express";
-import Server from "http";
+import ServerlessHttp from "serverless-http";
 import cors from "cors";
 import os from "node:os";
 import 'dotenv/config';
@@ -30,22 +30,8 @@ const __dirname = path.dirname(__filename);
 //     chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
 //   );
 // })
-Server.createServer(
-  app,
-  {
-    host: address,
-    port: PORT,
-  },
-  () => {
-    console.log(
-      "==================================================================="
-    );
-    console.log(
-      chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
-    );
-  }
-)
-console.info(`Listening on port ${PORT}`);
+
+ServerlessHttp(app);
 
 if (!fs.existsSync("channel.db")) {
   fs["writeFileSync"]("./channel.db", '{"channel": {}}');
