@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 import fs from "fs";
 app.use(express.json());
 const PORT = process.env.PORT || 3500;
+const address = process.env.ADDRESS;
 import path from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +33,7 @@ const __dirname = path.dirname(__filename);
 Server.createServer(
   app,
   {
-    host: "0.0.0.0",
+    host: address,
     port: PORT,
   },
   () => {
