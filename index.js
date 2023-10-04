@@ -1,5 +1,5 @@
 import express from "express";
-import Server from "http-proxy";
+import Server from "http";
 import cors from "cors";
 import os from "node:os";
 import 'dotenv/config';
