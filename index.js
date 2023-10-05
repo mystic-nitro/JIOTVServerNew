@@ -17,15 +17,9 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
-http.createServer(app).listen(PORT, "0.0.0.0", () => {
-  console.log(
-    chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
-  );
-})
-
 server.createProxyServer({
   target: address
-}).listen(PORT, "0.0.0.0", () => {
+}).listen(PORT, () => {
   console.log(
     chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.,", address)
   )
@@ -75,3 +69,7 @@ app.get("/favicon.ico", (req, res) => {
 import { handler } from "./build/handler.js";
 
 app.use(handler);
+
+app.listen(PORT,"0.0.0.0", () => {
+  console.log(`Listening on port ${PORT}`);
+});
