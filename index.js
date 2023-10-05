@@ -1,5 +1,6 @@
 import express from "express";
 import http from "http";
+import server from "http-proxy";
 import cors from "cors";
 import os from "node:os";
 import 'dotenv/config';
@@ -20,6 +21,14 @@ http.createServer(app).listen(PORT, "0.0.0.0", () => {
   console.log(
     chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
   );
+})
+
+server.createProxyServer({
+  target: address
+}).listen(PORT, "0.0.0.0", () => {
+  console.log(
+    chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.,", address)
+  )
 })
 
 if (!fs.existsSync("channel.db")) {
