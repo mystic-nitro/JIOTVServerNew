@@ -1,4 +1,5 @@
 import express from "express";
+import http from "http";
 import cors from "cors";
 import os from "node:os";
 import 'dotenv/config';
@@ -14,6 +15,12 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
+
+http.createServer(app).listen(PORT, "0.0.0.0", () => {
+  console.log(
+    chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
+  );
+})
 
 if (!fs.existsSync("channel.db")) {
   fs["writeFileSync"]("./channel.db", '{"channel": {}}');
@@ -59,9 +66,3 @@ app.get("/favicon.ico", (req, res) => {
 import { handler } from "./build/handler.js";
 
 app.use(handler);
-
-app.listen(PORT, "jiotvserver-production-ab00.up.railway.app", () => {
-  console.log(
-    chalk.green("THIS SERVER IS 100% FREE. PLEASE DON'T PAY ANYONE.")
-  );
-});
